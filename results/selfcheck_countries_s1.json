@@ -1,0 +1,910 @@
+{
+  "args": {
+    "datasets": [
+      "countries_s1"
+    ],
+    "methods": null,
+    "max_test": 50,
+    "max_images": null,
+    "chunk": 512,
+    "audit_n": 120,
+    "sps_impute": "max",
+    "boot": 100,
+    "perm": 200,
+    "seed": 2026,
+    "dim": 128,
+    "epochs": 8,
+    "n_neg": 4,
+    "lr": 0.001,
+    "batch": 4096,
+    "lam_align": 1.0,
+    "d_sem": 256,
+    "n_types": 16,
+    "device": "auto",
+    "max_minutes": 1.0,
+    "quick": true,
+    "ablations": false,
+    "out": "results/selfcheck_countries_s1.json"
+  },
+  "env": {
+    "backend": "torch",
+    "torch": "2.6.0+cpu",
+    "device": "cpu",
+    "device_name": "CPU",
+    "cuda": null
+  },
+  "records": [
+    {
+      "dataset": "countries_s1",
+      "pair": "countries-S1-受控: 左侧 271 实体 / 2 关系 / 0 属性断言；右侧 271 实体 / 2 关系 / 0 属性断言；seeds 190 / val 8 / test 50；truth_per_left=1；unit=实体(受控)；note=右图为左图补全边的同图，用于自检；非公开基准",
+      "meta": {
+        "dataset": "countries_S1",
+        "unit": "实体(受控)",
+        "truth_per_left": 1,
+        "note": "右图为左图补全边的同图，用于自检；非公开基准"
+      },
+      "methods": {
+        "NNSim": {
+          "family": "表层字面",
+          "flags": {
+            "fiber": false
+          },
+          "Hits@1": 1.0,
+          "Hits@5": 1.0,
+          "Hits@10": 1.0,
+          "MRR": 1.0,
+          "MAP@10": 1.0,
+          "MedRank": 1.0,
+          "纤维保持率": null,
+          "n_query": 50,
+          "Hits@1_CI": [
+            1.0,
+            1.0
+          ],
+          "Hits@1_乐观": 1.0,
+          "MRR_乐观": 1.0,
+          "并列数均值": 1.0,
+          "含并列行占比": 0.0,
+          "fit_seconds": 0.0,
+          "epochs_done": null,
+          "score_seconds": 0.0,
+          "params": 0,
+          "embed_params": 0,
+          "param_detail": {},
+          "Δ_comm": 0.0,
+          "Δ_comm_floor": 0.0,
+          "Δ_nat": 0.0,
+          "Δ_glue": 0.0,
+          "Δ_glue_cocone": null,
+          "Δ_glue_pool": null,
+          "n_route": 1,
+          "n_route_offered": 1,
+          "fusion_routes": [
+            "主路由"
+          ],
+          "routes": [
+            "主路由"
+          ],
+          "Δ": 0.0,
+          "SPS": 1.0,
+          "alpha": [
+            1.0556,
+            0.5374,
+            0.0
+          ],
+          "Δ_nat_imputed": false,
+          "Δ_glue_imputed": false,
+          "vs_CUSSM": {
+            "diff": 0.0,
+            "p": 1.0,
+            "n": 50
+          }
+        },
+        "AttrSim": {
+          "family": "属性语义",
+          "flags": {
+            "fiber": false
+          },
+          "Hits@1": 0.0,
+          "Hits@5": 0.02,
+          "Hits@10": 0.06,
+          "MRR": 0.02081088570969686,
+          "MAP@10": 0.008222222222222221,
+          "MedRank": 118.0,
+          "纤维保持率": null,
+          "n_query": 50,
+          "Hits@1_CI": [
+            0.0,
+            0.0
+          ],
+          "Hits@1_乐观": 1.0,
+          "MRR_乐观": 1.0,
+          "并列数均值": 271.0,
+          "含并列行占比": 1.0,
+          "fit_seconds": 0.0,
+          "epochs_done": null,
+          "score_seconds": 0.0,
+          "params": 0,
+          "embed_params": 0,
+          "param_detail": {},
+          "Δ_comm": 1.0,
+          "Δ_comm_floor": 0.0,
+          "Δ_nat": 0.0,
+          "Δ_glue": 0.0,
+          "Δ_glue_cocone": null,
+          "Δ_glue_pool": null,
+          "n_route": 1,
+          "n_route_offered": 1,
+          "fusion_routes": [
+            "主路由"
+          ],
+          "routes": [
+            "主路由"
+          ],
+          "Δ": 1.0555555555555554,
+          "SPS": 0.3479990407922553,
+          "alpha": [
+            1.0556,
+            0.5374,
+            0.0
+          ],
+          "Δ_nat_imputed": false,
+          "Δ_glue_imputed": false,
+          "vs_CUSSM": {
+            "diff": 1.0,
+            "p": 0.005,
+            "n": 50
+          }
+        },
+        "StructSim": {
+          "family": "结构传播",
+          "flags": {
+            "传播轮数(验证集选出)": 0,
+            "新增匹配对数": 0
+          },
+          "Hits@1": 0.5,
+          "Hits@5": 0.7,
+          "Hits@10": 0.76,
+          "MRR": 0.6010615790124098,
+          "MAP@10": 0.5958333333333333,
+          "MedRank": 1.5,
+          "纤维保持率": null,
+          "n_query": 50,
+          "Hits@1_CI": [
+            0.36,
+            0.6304999999999998
+          ],
+          "Hits@1_乐观": 0.92,
+          "MRR_乐观": 0.96,
+          "并列数均值": 63.82,
+          "含并列行占比": 0.52,
+          "fit_seconds": 0.0,
+          "epochs_done": null,
+          "score_seconds": 0.0,
+          "params": 0,
+          "embed_params": 0,
+          "param_detail": {
+            "结构传播新增匹配对数": 0
+          },
+          "Δ_comm": 0.10526315789473684,
+          "Δ_comm_floor": 0.0,
+          "Δ_nat": 0.0,
+          "Δ_glue": 0.0,
+          "Δ_glue_cocone": null,
+          "Δ_glue_pool": null,
+          "n_route": 1,
+          "n_route_offered": 1,
+          "fusion_routes": [
+            "主路由"
+          ],
+          "routes": [
+            "主路由"
+          ],
+          "Δ": 0.11111111111111109,
+          "SPS": 0.8948393168143698,
+          "alpha": [
+            1.0556,
+            0.5374,
+            0.0
+          ],
+          "Δ_nat_imputed": false,
+          "Δ_glue_imputed": false,
+          "vs_CUSSM": {
+            "diff": 0.5,
+            "p": 0.005,
+            "n": 50
+          }
+        },
+        "StructProp-自训练": {
+          "family": "结构传播",
+          "flags": {
+            "传播轮数(验证集选出)": 1,
+            "新增匹配对数": 16
+          },
+          "Hits@1": 0.5,
+          "Hits@5": 0.7,
+          "Hits@10": 0.76,
+          "MRR": 0.6010615790124098,
+          "MAP@10": 0.5958333333333333,
+          "MedRank": 1.5,
+          "纤维保持率": null,
+          "n_query": 50,
+          "Hits@1_CI": [
+            0.36,
+            0.6304999999999998
+          ],
+          "Hits@1_乐观": 0.92,
+          "MRR_乐观": 0.96,
+          "并列数均值": 63.82,
+          "含并列行占比": 0.52,
+          "fit_seconds": 0.03,
+          "epochs_done": null,
+          "score_seconds": 0.0,
+          "params": 0,
+          "embed_params": 0,
+          "param_detail": {
+            "结构传播新增匹配对数": 16
+          },
+          "Δ_comm": 0.10526315789473684,
+          "Δ_comm_floor": 0.0,
+          "Δ_nat": 0.0,
+          "Δ_glue": 0.0,
+          "Δ_glue_cocone": null,
+          "Δ_glue_pool": null,
+          "n_route": 1,
+          "n_route_offered": 1,
+          "fusion_routes": [
+            "主路由"
+          ],
+          "routes": [
+            "主路由"
+          ],
+          "Δ": 0.11111111111111109,
+          "SPS": 0.8948393168143698,
+          "alpha": [
+            1.0556,
+            0.5374,
+            0.0
+          ],
+          "Δ_nat_imputed": false,
+          "Δ_glue_imputed": false,
+          "vs_CUSSM": {
+            "diff": 0.5,
+            "p": 0.005,
+            "n": 50
+          }
+        },
+        "LinFuse": {
+          "family": "线性融合",
+          "flags": {
+            "α(验证集选出)": 0.0,
+            "w(验证集选出)": 0.25
+          },
+          "Hits@1": 1.0,
+          "Hits@5": 1.0,
+          "Hits@10": 1.0,
+          "MRR": 1.0,
+          "MAP@10": 1.0,
+          "MedRank": 1.0,
+          "纤维保持率": null,
+          "n_query": 50,
+          "Hits@1_CI": [
+            1.0,
+            1.0
+          ],
+          "Hits@1_乐观": 1.0,
+          "MRR_乐观": 1.0,
+          "并列数均值": 1.0,
+          "含并列行占比": 0.0,
+          "fit_seconds": 0.12,
+          "epochs_done": null,
+          "score_seconds": 0.0,
+          "params": 131074,
+          "embed_params": 0,
+          "param_detail": {
+            "语义路由映射 ×2": 131072,
+            "融合标量 w, α": 2
+          },
+          "Δ_comm": 0.0,
+          "Δ_comm_floor": 0.0,
+          "Δ_nat": 0.620276880826391,
+          "Δ_glue": 0.0,
+          "Δ_glue_cocone": null,
+          "Δ_glue_pool": null,
+          "n_route": 1,
+          "n_route_offered": 2,
+          "fusion_routes": [
+            "K 语义路由"
+          ],
+          "routes": [
+            "H 结构路由",
+            "K 语义路由"
+          ],
+          "Δ": 0.3333333333333333,
+          "SPS": 0.7165313105737893,
+          "alpha": [
+            1.0556,
+            0.5374,
+            0.0
+          ],
+          "Δ_nat_imputed": false,
+          "Δ_glue_imputed": false,
+          "vs_CUSSM": {
+            "diff": 0.0,
+            "p": 1.0,
+            "n": 50
+          }
+        },
+        "TransE-NN": {
+          "family": "结构嵌入",
+          "flags": {
+            "fiber": false
+          },
+          "Hits@1": 0.02,
+          "Hits@5": 0.04,
+          "Hits@10": 0.06,
+          "MRR": 0.04004434701855875,
+          "MAP@10": 0.026857142857142854,
+          "MedRank": 114.0,
+          "纤维保持率": null,
+          "n_query": 50,
+          "Hits@1_CI": [
+            0.0,
+            0.07049999999999983
+          ],
+          "Hits@1_乐观": 0.02,
+          "MRR_乐观": 0.04004434701855875,
+          "并列数均值": 1.0,
+          "含并列行占比": 0.0,
+          "fit_seconds": 3.74,
+          "epochs_done": [
+            8,
+            8
+          ],
+          "score_seconds": 0.0,
+          "params": 16388,
+          "embed_params": 0,
+          "param_detail": {
+            "对齐映射 W": 16384,
+            "融合标量": 4,
+            "结构嵌入表 E_L,E_R": 277504
+          },
+          "Δ_comm": 0.368421052631579,
+          "Δ_comm_floor": 0.0,
+          "Δ_nat": 0.0,
+          "Δ_glue": 0.0,
+          "Δ_glue_cocone": null,
+          "Δ_glue_pool": null,
+          "n_route": 1,
+          "n_route_offered": 1,
+          "fusion_routes": [
+            "主路由"
+          ],
+          "routes": [
+            "主路由"
+          ],
+          "Δ": 0.38888888888888884,
+          "SPS": 0.6778095780054504,
+          "alpha": [
+            1.0556,
+            0.5374,
+            0.0
+          ],
+          "Δ_nat_imputed": false,
+          "Δ_glue_imputed": false,
+          "vs_CUSSM": {
+            "diff": 0.98,
+            "p": 0.005,
+            "n": 50
+          }
+        },
+        "MTransE": {
+          "family": "结构嵌入",
+          "flags": {
+            "fiber": false
+          },
+          "Hits@1": 0.0,
+          "Hits@5": 0.02,
+          "Hits@10": 0.02,
+          "MRR": 0.021201597912042788,
+          "MAP@10": 0.005,
+          "MedRank": 121.5,
+          "纤维保持率": null,
+          "n_query": 50,
+          "Hits@1_CI": [
+            0.0,
+            0.0
+          ],
+          "Hits@1_乐观": 0.0,
+          "MRR_乐观": 0.021201597912042788,
+          "并列数均值": 1.0,
+          "含并列行占比": 0.0,
+          "fit_seconds": 0.26,
+          "epochs_done": 8,
+          "score_seconds": 0.0,
+          "params": 16388,
+          "embed_params": 0,
+          "param_detail": {
+            "对齐映射 W": 16384,
+            "融合标量": 4,
+            "结构嵌入表 E_L,E_R": 277504
+          },
+          "Δ_comm": 0.368421052631579,
+          "Δ_comm_floor": 0.0,
+          "Δ_nat": 0.0,
+          "Δ_glue": 0.0,
+          "Δ_glue_cocone": null,
+          "Δ_glue_pool": null,
+          "n_route": 1,
+          "n_route_offered": 1,
+          "fusion_routes": [
+            "主路由"
+          ],
+          "routes": [
+            "主路由"
+          ],
+          "Δ": 0.38888888888888884,
+          "SPS": 0.6778095780054504,
+          "alpha": [
+            1.0556,
+            0.5374,
+            0.0
+          ],
+          "Δ_nat_imputed": false,
+          "Δ_glue_imputed": false,
+          "vs_CUSSM": {
+            "diff": 1.0,
+            "p": 0.005,
+            "n": 50
+          }
+        },
+        "JAPE": {
+          "family": "联合嵌入",
+          "flags": {
+            "fiber": false
+          },
+          "Hits@1": 0.48,
+          "Hits@5": 0.9,
+          "Hits@10": 0.94,
+          "MRR": 0.667468137254902,
+          "MAP@10": 0.664,
+          "MedRank": 2.0,
+          "纤维保持率": null,
+          "n_query": 50,
+          "Hits@1_CI": [
+            0.36,
+            0.62
+          ],
+          "Hits@1_乐观": 0.48,
+          "MRR_乐观": 0.667468137254902,
+          "并列数均值": 1.0,
+          "含并列行占比": 0.0,
+          "fit_seconds": 0.25,
+          "epochs_done": 8,
+          "score_seconds": 0.0,
+          "params": 16388,
+          "embed_params": 0,
+          "param_detail": {
+            "对齐映射 W": 16384,
+            "融合标量": 4,
+            "结构嵌入表 E_L,E_R": 277504,
+            "拼接空间对齐 W": 409600
+          },
+          "Δ_comm": 0.26315789473684215,
+          "Δ_comm_floor": 0.0,
+          "Δ_nat": 0.0,
+          "Δ_glue": 0.0,
+          "Δ_glue_cocone": null,
+          "Δ_glue_pool": null,
+          "n_route": 1,
+          "n_route_offered": 1,
+          "fusion_routes": [
+            "主路由"
+          ],
+          "routes": [
+            "主路由"
+          ],
+          "Δ": 0.2777777777777778,
+          "SPS": 0.7574651283969664,
+          "alpha": [
+            1.0556,
+            0.5374,
+            0.0
+          ],
+          "Δ_nat_imputed": false,
+          "Δ_glue_imputed": false,
+          "vs_CUSSM": {
+            "diff": 0.52,
+            "p": 0.005,
+            "n": 50
+          }
+        },
+        "CUSSM": {
+          "family": "本文方法",
+          "flags": {
+            "fiber": true,
+            "type": true,
+            "glue": true,
+            "route_H": true,
+            "route_K": true,
+            "传播轮数(验证集选出)": 0,
+            "传播新增匹配对数": 0,
+            "α": 0.0,
+            "β": 0.0,
+            "γ": 0.0,
+            "δ": 0.0,
+            "w 字面权重": 0.25,
+            "val hits@1": 1.0,
+            "通道准入": [
+              "M1 结构路由:✗(+0.0000<0.0000)",
+              "M2 粘合通道:✗(+0.0000<0.0040)",
+              "M3 纤维/类型:✗(+0.0000<0.0040)"
+            ]
+          },
+          "Hits@1": 1.0,
+          "Hits@5": 1.0,
+          "Hits@10": 1.0,
+          "MRR": 1.0,
+          "MAP@10": 1.0,
+          "MedRank": 1.0,
+          "纤维保持率": 0.24,
+          "n_query": 50,
+          "Hits@1_CI": [
+            1.0,
+            1.0
+          ],
+          "Hits@1_乐观": 1.0,
+          "MRR_乐观": 1.0,
+          "并列数均值": 1.0,
+          "含并列行占比": 0.0,
+          "fit_seconds": 0.05,
+          "epochs_done": null,
+          "score_seconds": 0.02,
+          "params": 131333,
+          "embed_params": 0,
+          "param_detail": {
+            "语义路由映射 W_字面": 65536,
+            "语义路由映射 W_属性": 65536,
+            "类型先验表": 256,
+            "融合标量 w,α,β,γ,δ": 5,
+            "结构传播新增匹配对数": 0
+          },
+          "Δ_comm": 0.0,
+          "Δ_comm_floor": 0.0,
+          "Δ_nat": 0.620276880826391,
+          "Δ_glue": 0.0,
+          "Δ_glue_cocone": null,
+          "Δ_glue_pool": null,
+          "n_route": 1,
+          "n_route_offered": 3,
+          "fusion_routes": [
+            "K 语义路由"
+          ],
+          "routes": [
+            "H 结构路由",
+            "K 语义路由",
+            "C 粘合路由"
+          ],
+          "Δ": 0.3333333333333333,
+          "SPS": 0.7165313105737893,
+          "alpha": [
+            1.0556,
+            0.5374,
+            0.0
+          ],
+          "Δ_nat_imputed": false,
+          "Δ_glue_imputed": false
+        }
+      },
+      "ablations": {},
+      "alpha": [
+        1.0556,
+        0.5374,
+        0.0
+      ],
+      "sic": {
+        "n_chains": 5,
+        "mean_len": 5.0,
+        "n_pass": 5,
+        "chains": [
+          {
+            "anchor": [
+              241,
+              241
+            ],
+            "pred": 241,
+            "adopt": true,
+            "steps": [
+              [
+                "① 类型步",
+                "纤维 τ(u)=14，τ(pred)=0（不一致）",
+                0.0
+              ],
+              [
+                "② 结构步",
+                "H 结构路由 得分 1.0000，候选内排名 1",
+                -1.0
+              ],
+              [
+                "③ 语义步",
+                "K 语义路由 得分 0.2008，候选内排名 1",
+                -1.0
+              ],
+              [
+                "④ 证据步",
+                "共享属性键 0 个（无），表层名 3-gram Jaccard = 1.0000",
+                1.0
+              ],
+              [
+                "⑤ 结论步",
+                "融合得分为候选最高，领先次优 5.7267；采纳",
+                1.0
+              ]
+            ],
+            "checks": {
+              "C1": true,
+              "C2": true,
+              "C3": true,
+              "C4": true
+            },
+            "passed": true
+          },
+          {
+            "anchor": [
+              237,
+              237
+            ],
+            "pred": 237,
+            "adopt": true,
+            "steps": [
+              [
+                "① 类型步",
+                "纤维 τ(u)=9，τ(pred)=15（不一致）",
+                0.0
+              ],
+              [
+                "② 结构步",
+                "H 结构路由 得分 0.6547，候选内排名 1",
+                -1.0
+              ],
+              [
+                "③ 语义步",
+                "K 语义路由 得分 0.1899，候选内排名 1",
+                -1.0
+              ],
+              [
+                "④ 证据步",
+                "共享属性键 0 个（无），表层名 3-gram Jaccard = 1.0000",
+                1.0
+              ],
+              [
+                "⑤ 结论步",
+                "融合得分为候选最高，领先次优 4.1268；采纳",
+                1.0
+              ]
+            ],
+            "checks": {
+              "C1": true,
+              "C2": true,
+              "C3": true,
+              "C4": true
+            },
+            "passed": true
+          },
+          {
+            "anchor": [
+              267,
+              267
+            ],
+            "pred": 267,
+            "adopt": true,
+            "steps": [
+              [
+                "① 类型步",
+                "纤维 τ(u)=9，τ(pred)=15（不一致）",
+                0.0
+              ],
+              [
+                "② 结构步",
+                "H 结构路由 得分 0.7071，候选内排名 2",
+                -1.0
+              ],
+              [
+                "③ 语义步",
+                "K 语义路由 得分 0.1610，候选内排名 1",
+                -1.0
+              ],
+              [
+                "④ 证据步",
+                "共享属性键 0 个（无），表层名 3-gram Jaccard = 1.0000",
+                1.0
+              ],
+              [
+                "⑤ 结论步",
+                "融合得分为候选最高，领先次优 5.9636；采纳",
+                1.0
+              ]
+            ],
+            "checks": {
+              "C1": true,
+              "C2": true,
+              "C3": true,
+              "C4": true
+            },
+            "passed": true
+          },
+          {
+            "anchor": [
+              58,
+              58
+            ],
+            "pred": 58,
+            "adopt": true,
+            "steps": [
+              [
+                "① 类型步",
+                "纤维 τ(u)=14，τ(pred)=0（不一致）",
+                0.0
+              ],
+              [
+                "② 结构步",
+                "H 结构路由 得分 0.7071，候选内排名 1",
+                -1.0
+              ],
+              [
+                "③ 语义步",
+                "K 语义路由 得分 0.2092，候选内排名 1",
+                -1.0
+              ],
+              [
+                "④ 证据步",
+                "共享属性键 0 个（无），表层名 3-gram Jaccard = 1.0000",
+                1.0
+              ],
+              [
+                "⑤ 结论步",
+                "融合得分为候选最高，领先次优 5.6464；采纳",
+                1.0
+              ]
+            ],
+            "checks": {
+              "C1": true,
+              "C2": true,
+              "C3": true,
+              "C4": true
+            },
+            "passed": true
+          },
+          {
+            "anchor": [
+              13,
+              13
+            ],
+            "pred": 13,
+            "adopt": true,
+            "steps": [
+              [
+                "① 类型步",
+                "纤维 τ(u)=8，τ(pred)=8（一致）",
+                1.0
+              ],
+              [
+                "② 结构步",
+                "H 结构路由 得分 0.7785，候选内排名 1",
+                -1.0
+              ],
+              [
+                "③ 语义步",
+                "K 语义路由 得分 0.2388，候选内排名 1",
+                -1.0
+              ],
+              [
+                "④ 证据步",
+                "共享属性键 0 个（无），表层名 3-gram Jaccard = 1.0000",
+                1.0
+              ],
+              [
+                "⑤ 结论步",
+                "融合得分为候选最高，领先次优 2.9705；采纳",
+                1.0
+              ]
+            ],
+            "checks": {
+              "C1": true,
+              "C2": true,
+              "C3": true,
+              "C4": true
+            },
+            "passed": true
+          }
+        ],
+        "example": "① 类型步纤维 τ(u)=14，τ(pred)=0（不一致）；② 结构步H 结构路由 得分 1.0000，候选内排名 1；③ 语义步K 语义路由 得分 0.2008，候选内排名 1；④ 证据步共享属性键 0 个（无），表层名 3-gram Jaccard = 1.0000；⑤ 结论步融合得分为候选最高，领先次优 5.7267；采纳"
+      },
+      "holm": [
+        {
+          "对照": "AttrSim",
+          "p": 0.005,
+          "阈值": 0.00625,
+          "显著": true
+        },
+        {
+          "对照": "StructSim",
+          "p": 0.005,
+          "阈值": 0.0071428571428571435,
+          "显著": true
+        },
+        {
+          "对照": "StructProp-自训练",
+          "p": 0.005,
+          "阈值": 0.008333333333333333,
+          "显著": true
+        },
+        {
+          "对照": "TransE-NN",
+          "p": 0.005,
+          "阈值": 0.01,
+          "显著": true
+        },
+        {
+          "对照": "JAPE",
+          "p": 0.005,
+          "阈值": 0.0125,
+          "显著": true
+        },
+        {
+          "对照": "MTransE",
+          "p": 0.005,
+          "阈值": 0.016666666666666666,
+          "显著": true
+        },
+        {
+          "对照": "NNSim",
+          "p": 1.0,
+          "阈值": 0.025,
+          "显著": false
+        },
+        {
+          "对照": "LinFuse",
+          "p": 1.0,
+          "阈值": 0.05,
+          "显著": false
+        }
+      ],
+      "纤维约束前沿": [
+        {
+          "β": 0.0,
+          "Hits@1": 1.0,
+          "纤维保持率": 0.24
+        },
+        {
+          "β": 0.05,
+          "Hits@1": 1.0,
+          "纤维保持率": 0.24
+        },
+        {
+          "β": 0.1,
+          "Hits@1": 1.0,
+          "纤维保持率": 0.24
+        },
+        {
+          "β": 0.25,
+          "Hits@1": 1.0,
+          "纤维保持率": 0.24
+        },
+        {
+          "β": 0.5,
+          "Hits@1": 1.0,
+          "纤维保持率": 0.24
+        },
+        {
+          "β": 1.0,
+          "Hits@1": 1.0,
+          "纤维保持率": 0.24
+        }
+      ],
+      "peak_rss_mb": 87.8,
+      "rss_delta_mb": 87.8,
+      "wall_seconds": 5.2
+    }
+  ]
+}

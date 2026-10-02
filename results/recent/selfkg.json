@@ -1,0 +1,378 @@
+{
+  "args": {
+    "datasets": [
+      "dbp15k_fr_en",
+      "dbp15k_zh_en",
+      "dbp15k_ja_en"
+    ],
+    "methods": [
+      "SelfKG"
+    ],
+    "max_test": null,
+    "max_images": null,
+    "chunk": 512,
+    "audit_n": 400,
+    "sps_impute": "max",
+    "boot": 2000,
+    "perm": 10000,
+    "seed": 2026,
+    "dim": 128,
+    "epochs": 60,
+    "n_neg": 4,
+    "lr": 0.001,
+    "batch": 4096,
+    "lam_align": 1.0,
+    "d_sem": 256,
+    "n_types": 16,
+    "device": "cuda",
+    "mm_encoder": false,
+    "mm_epochs1": 6,
+    "mm_epochs2": 1,
+    "mm_d": 256,
+    "mm_batch": 64,
+    "mm_bs2": 16,
+    "mm_workers": 4,
+    "mm_limit_regions": null,
+    "mm_stage2_pairs": 20000,
+    "budget_mode": "epochs",
+    "max_minutes": null,
+    "quick": false,
+    "ablations": false,
+    "ablation_set": "standard",
+    "out": "results/recent/selfkg.json",
+    "resume": false
+  },
+  "env": {
+    "python": "3.12.3",
+    "numpy": "2.5.3",
+    "cpu_count": 8,
+    "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.39",
+    "machine": "x86_64",
+    "hostname": "unknown",
+    "scipy": "1.18.1",
+    "backend": "torch",
+    "torch": "2.14.0+cu126",
+    "device": "cuda",
+    "device_name": "Tesla T4",
+    "cuda": "12.6",
+    "cuda_capability": "7.5",
+    "cuda_mem_GB": 14.6
+  },
+  "records": [
+    {
+      "dataset": "dbp15k_fr_en",
+      "pair": "DBP15K-fr_en: 左侧 66858 实体 / 1379 关系 / 309033 属性断言；右侧 105889 实体 / 2209 关系 / 299186 属性断言；seeds 4050 / val 450 / test 10500；truth_per_left=1；unit=实体；note=测试实体训练期屏蔽；两侧下标空间独立",
+      "meta": {
+        "dataset": "DBP15K",
+        "lang": "fr_en",
+        "seed_ratio": 0.3,
+        "seed": 2026,
+        "unit": "实体",
+        "truth_per_left": 1,
+        "candidates": "目标 KG 全部 105889 个实体",
+        "n_ill": 15000,
+        "att_left": {
+          "n_att_raw": 528665,
+          "n_att_numeral_dropped": 219632,
+          "n_att_kept": 309033,
+          "n_rel_triples": 192191
+        },
+        "att_right": {
+          "n_att_raw": 576543,
+          "n_att_numeral_dropped": 277357,
+          "n_att_kept": 299186,
+          "n_rel_triples": 278590
+        },
+        "note": "测试实体训练期屏蔽；两侧下标空间独立"
+      },
+      "methods": {
+        "SelfKG": {
+          "family": "结构嵌入（近五年）",
+          "flags": {
+            "实现": "reimplemented-from-paper",
+            "输入特征": "L=LaBSE(setu4993/LaBSE) / R=LaBSE(setu4993/LaBSE)",
+            "对齐": "隐式（两图共用同一套变换 ⇒ 统一空间内直接余弦，原文无显式对齐步骤）",
+            "用种子": false,
+            "完成轮数": 60,
+            "梯度步数": 60,
+            "编码器层数": 1,
+            "温度 τ": 0.08,
+            "负例数(末次)": 14336
+          },
+          "Hits@1": 0.8622857142857143,
+          "Hits@5": 0.9245714285714286,
+          "Hits@10": 0.9381904761904762,
+          "MRR": 0.8908117220038851,
+          "MAP@10": 0.889399433106576,
+          "MedRank": 1.0,
+          "纤维保持率": 0.49838095238095237,
+          "n_query": 10500,
+          "Hits@1_CI": [
+            0.8557142857142858,
+            0.8689523809523809
+          ],
+          "Hits@1_乐观": 0.8622857142857143,
+          "MRR_乐观": 0.8908117220038851,
+          "并列数均值": 1.0,
+          "含并列行占比": 0.0,
+          "fit_seconds": 158.37,
+          "epochs_done": 60,
+          "epochs_planned": 60,
+          "epochs_truncated": false,
+          "score_seconds": 5.76,
+          "params": 459520,
+          "embed_params": 0,
+          "param_detail": {
+            "编码器参数": 459520,
+            "负例队列(批)": 6
+          },
+          "Δ_comm": 0.21755102040816326,
+          "Δ_comm_floor": 0.30985915492957744,
+          "Δ_nat": 0.0,
+          "Δ_glue": 0.0,
+          "Δ_glue_cocone": null,
+          "Δ_glue_pool": null,
+          "n_route": 1,
+          "n_route_offered": 1,
+          "fusion_routes": [
+            "主路由"
+          ],
+          "routes": [
+            "主路由"
+          ],
+          "Δ": 0.3333333333333333,
+          "SPS": 0.7165313105737893,
+          "alpha": [
+            1.5322,
+            0.0,
+            0.0
+          ],
+          "Δ_nat_imputed": false,
+          "Δ_glue_imputed": false
+        }
+      },
+      "ablations": {},
+      "alpha": [
+        1.5322,
+        0.0,
+        0.0
+      ],
+      "sic": null,
+      "mm_encoder": null,
+      "sps_pool": "offered",
+      "peak_rss_mb": 4056.7,
+      "rss_delta_mb": 3145.4,
+      "wall_seconds": 212.4
+    },
+    {
+      "dataset": "dbp15k_zh_en",
+      "pair": "DBP15K-zh_en: 左侧 66469 实体 / 2830 关系 / 203503 属性断言；右侧 98125 实体 / 2317 关系 / 281998 属性断言；seeds 4050 / val 450 / test 10500；truth_per_left=1；unit=实体；note=测试实体训练期屏蔽；两侧下标空间独立",
+      "meta": {
+        "dataset": "DBP15K",
+        "lang": "zh_en",
+        "seed_ratio": 0.3,
+        "seed": 2026,
+        "unit": "实体",
+        "truth_per_left": 1,
+        "candidates": "目标 KG 全部 98125 个实体",
+        "n_ill": 15000,
+        "att_left": {
+          "n_att_raw": 379684,
+          "n_att_numeral_dropped": 176181,
+          "n_att_kept": 203503,
+          "n_rel_triples": 153929
+        },
+        "att_right": {
+          "n_att_raw": 567755,
+          "n_att_numeral_dropped": 285757,
+          "n_att_kept": 281998,
+          "n_rel_triples": 237674
+        },
+        "note": "测试实体训练期屏蔽；两侧下标空间独立"
+      },
+      "methods": {
+        "SelfKG": {
+          "family": "结构嵌入（近五年）",
+          "flags": {
+            "实现": "reimplemented-from-paper",
+            "输入特征": "L=LaBSE(setu4993/LaBSE) / R=LaBSE(setu4993/LaBSE)",
+            "对齐": "隐式（两图共用同一套变换 ⇒ 统一空间内直接余弦，原文无显式对齐步骤）",
+            "用种子": false,
+            "完成轮数": 60,
+            "梯度步数": 60,
+            "编码器层数": 1,
+            "温度 τ": 0.08,
+            "负例数(末次)": 14336
+          },
+          "Hits@1": 0.46304761904761904,
+          "Hits@5": 0.6033333333333334,
+          "Hits@10": 0.6498095238095238,
+          "MRR": 0.5283694602956707,
+          "MAP@10": 0.5229352607709752,
+          "MedRank": 2.0,
+          "纤维保持率": 0.34104761904761904,
+          "n_query": 10500,
+          "Hits@1_CI": [
+            0.45390238095238095,
+            0.4722857142857143
+          ],
+          "Hits@1_乐观": 0.46304761904761904,
+          "MRR_乐观": 0.5283695156023461,
+          "并列数均值": 1.0000952380952381,
+          "含并列行占比": 9.523809523809524e-05,
+          "fit_seconds": 152.1,
+          "epochs_done": 60,
+          "epochs_planned": 60,
+          "epochs_truncated": false,
+          "score_seconds": 5.42,
+          "params": 459520,
+          "embed_params": 0,
+          "param_detail": {
+            "编码器参数": 459520,
+            "负例队列(批)": 6
+          },
+          "Δ_comm": 0.5723828125,
+          "Δ_comm_floor": 0.2808988764044944,
+          "Δ_nat": 0.0,
+          "Δ_glue": 0.0,
+          "Δ_glue_cocone": null,
+          "Δ_glue_pool": null,
+          "n_route": 1,
+          "n_route_offered": 1,
+          "fusion_routes": [
+            "主路由"
+          ],
+          "routes": [
+            "主路由"
+          ],
+          "Δ": 0.3333333333333333,
+          "SPS": 0.7165313105737893,
+          "alpha": [
+            0.5824,
+            0.0,
+            0.0
+          ],
+          "Δ_nat_imputed": false,
+          "Δ_glue_imputed": false
+        }
+      },
+      "ablations": {},
+      "alpha": [
+        0.5824,
+        0.0,
+        0.0
+      ],
+      "sic": null,
+      "mm_encoder": null,
+      "sps_pool": "offered",
+      "peak_rss_mb": 4855.3,
+      "rss_delta_mb": 798.6,
+      "wall_seconds": 195.8
+    },
+    {
+      "dataset": "dbp15k_ja_en",
+      "pair": "DBP15K-ja_en: 左侧 65744 实体 / 2043 关系 / 196152 属性断言；右侧 95680 实体 / 2096 关系 / 265833 属性断言；seeds 4050 / val 450 / test 10500；truth_per_left=1；unit=实体；note=测试实体训练期屏蔽；两侧下标空间独立",
+      "meta": {
+        "dataset": "DBP15K",
+        "lang": "ja_en",
+        "seed_ratio": 0.3,
+        "seed": 2026,
+        "unit": "实体",
+        "truth_per_left": 1,
+        "candidates": "目标 KG 全部 95680 个实体",
+        "n_ill": 15000,
+        "att_left": {
+          "n_att_raw": 354619,
+          "n_att_numeral_dropped": 158467,
+          "n_att_kept": 196152,
+          "n_rel_triples": 164373
+        },
+        "att_right": {
+          "n_att_raw": 497230,
+          "n_att_numeral_dropped": 231397,
+          "n_att_kept": 265833,
+          "n_rel_triples": 233319
+        },
+        "note": "测试实体训练期屏蔽；两侧下标空间独立"
+      },
+      "methods": {
+        "SelfKG": {
+          "family": "结构嵌入（近五年）",
+          "flags": {
+            "实现": "reimplemented-from-paper",
+            "输入特征": "L=LaBSE(setu4993/LaBSE) / R=LaBSE(setu4993/LaBSE)",
+            "对齐": "隐式（两图共用同一套变换 ⇒ 统一空间内直接余弦，原文无显式对齐步骤）",
+            "用种子": false,
+            "完成轮数": 60,
+            "梯度步数": 60,
+            "编码器层数": 1,
+            "温度 τ": 0.08,
+            "负例数(末次)": 14336
+          },
+          "Hits@1": 0.5499047619047619,
+          "Hits@5": 0.6785714285714286,
+          "Hits@10": 0.7205714285714285,
+          "MRR": 0.6116204365904194,
+          "MAP@10": 0.6070397959183673,
+          "MedRank": 1.0,
+          "纤维保持率": 0.44266666666666665,
+          "n_query": 10500,
+          "Hits@1_CI": [
+            0.5404761904761904,
+            0.5593333333333333
+          ],
+          "Hits@1_乐观": 0.5499047619047619,
+          "MRR_乐观": 0.6116204365904194,
+          "并列数均值": 1.0,
+          "含并列行占比": 0.0,
+          "fit_seconds": 164.59,
+          "epochs_done": 60,
+          "epochs_planned": 60,
+          "epochs_truncated": false,
+          "score_seconds": 5.06,
+          "params": 459520,
+          "embed_params": 0,
+          "param_detail": {
+            "编码器参数": 459520,
+            "负例队列(批)": 6
+          },
+          "Δ_comm": 0.3984251968503936,
+          "Δ_comm_floor": 0.33507853403141363,
+          "Δ_nat": 0.0,
+          "Δ_glue": 0.0,
+          "Δ_glue_cocone": null,
+          "Δ_glue_pool": null,
+          "n_route": 1,
+          "n_route_offered": 1,
+          "fusion_routes": [
+            "主路由"
+          ],
+          "routes": [
+            "主路由"
+          ],
+          "Δ": 0.3333333333333333,
+          "SPS": 0.7165313105737893,
+          "alpha": [
+            0.8366,
+            0.0,
+            0.0
+          ],
+          "Δ_nat_imputed": false,
+          "Δ_glue_imputed": false
+        }
+      },
+      "ablations": {},
+      "alpha": [
+        0.8366,
+        0.0,
+        0.0
+      ],
+      "sic": null,
+      "mm_encoder": null,
+      "sps_pool": "offered",
+      "peak_rss_mb": 5502.0,
+      "rss_delta_mb": 646.6,
+      "wall_seconds": 207.1
+    }
+  ]
+}
