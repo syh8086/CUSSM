@@ -101,5 +101,12 @@ python code/run_experiment.py                              # 全部数据集
 
 ## 七、许可
 
-代码许可请由作者在发布时补充 `LICENSE` 文件（本仓库尚未选定许可证，默认保留全部权利）。  
-第三方数据集遵循其各自原始许可，见上文第三节。
+本仓库代码采用 **MIT License**，全文见 [`LICENSE`](LICENSE)。
+
+```
+MIT License
+
+Copyright (c) 2026 syh8086
+```
+
+第三方数据集与第三方方法实现遵循其各自原始许可，见上文第三节。
