@@ -1,0 +1,40 @@
+# 第 5 章实验的运行时依赖
+#
+# 版本号取自本机已验证的运行面（2026-09-28 实测），云端用同版本是"读数可比"的前提。
+# 若云端源上找不到完全相同的补丁版本，退一步要求 **主版本一致**（numpy 2.x / scipy 1.x），
+# 并在结果的环境指纹里如实注明，不要静默升级。
+#
+# 安装：
+#   python -m pip install -r code/requirements.txt \
+#       -i https://pypi.tuna.tsinghua.edu.cn/simple
+#
+# 注意：torch **不写在本文件里**。CPU 版与 CUDA 版的 wheel 源不同，
+#       统一走 torch 官方安装源（按 CUDA 版本取对应 wheel）。
+#       本文件的 numpy/scipy 已覆盖全部无需训练的模块（模型、指标、SPS、SIC、最优传输、
+#       统计检验、跨数据集实测、纤维前沿）—— 这些模块不含任何 torch 调用。
+
+numpy==2.5.3
+scipy==1.18.1
+
+# ---------------------------------------------------------------------------
+# Track A′（跨模态编码器）额外依赖 —— 只在跑 `--mm-encoder` 时需要
+#
+# **torchvision 不要写在这里、更不要 `pip install torchvision` 随手装。**
+# 它的 wheel METADATA 写死 `Requires-Dist: torch (==X.Y.Z)`，版本错配会直接
+# 换掉 torch（CUDA 版 → 可能被降级/换成 CPU 版），属于最坏的一类错误。
+# 2026-09-28 实测：torch 2.14.0+cu126 ⇔ torchvision 0.29.0+cu126（METADATA 实证）。
+#
+# 依赖关系（实测踩坑记录）：
+#   * `transformers.AutoImageProcessor` **依赖 torchvision** —— 只装 transformers 会在
+#     编码器第一步就 `ImportError: requires the Torchvision library`（本轮真实发生过）。
+#   * `pillow` 是 torchvision 与图像裁剪（`ImageBank` 直接随机读 flickr30k-images.zip）的前提。
+#
+# 正确装法（按 torch 版本精确配对）：取**定版** cu126 wheel，
+# 用 `--no-deps --no-index` 安装，保证不动 torch。
+#
+# 版本参考（2026-09-28 云端实测）：
+#   transformers 5.17.0（PyPI 上 `>=4.44` 的当前解析结果）
+#   pillow       12.3.0
+#   torchvision  0.29.0+cu126   ← 必须与 torch 精确配对
+#   huggingface-hub / tokenizers / safetensors 由 transformers 带入
+# ---------------------------------------------------------------------------

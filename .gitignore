@@ -1,0 +1,24 @@
+# 原始数据（不随仓库分发，用 code/download_data.py 获取）
+data/raw/*
+!data/raw/kg_small
+!data/raw/kg_small/**
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# 运行日志与中间态
+results/logs/
+results/cloud_logs/
+*.bak
+*.bak.json
+*prev.bak*
+*pre_offered*
+
+# 本地配置与凭据
+.env
+*.pem
+cloud.env
